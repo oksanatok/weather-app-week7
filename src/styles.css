@@ -6,12 +6,6 @@ h4 {
   color: rgb(30, 127, 168);
 }
 
-hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 4px solid rgba(30, 127, 168);
-}
 .col-6 {
   font-weight: 200;
 }
@@ -48,4 +42,18 @@ hr {
 }
 .city {
   font-weight: bolder;
+}
+.card {
+  margin-top: 20px;
+}
+.todayTemp,
+.weather-description {
+  font-size: 22pt;
+  position: relative;
+}
+.units {
+  vertical-align: top;
+}
+a {
+  text-decoration: none;
 }
