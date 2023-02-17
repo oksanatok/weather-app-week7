@@ -36,6 +36,7 @@
                     placeholder="City, region..."
                     aria-label="Search"
                     id="search-input"
+                    autocomplete="off"
                   />
                   <button class="btn btn-outline-success" type="submit">
                     Search
@@ -50,14 +51,13 @@
               <div class="col-6 today"><h4>Today</h4></div>
 
               <div class="col-3">
-                <span class="todayTemp"
-                  ><span class="fa-solid fa-temperature-half"></span>
-                  +4
+                <span class="fa-solid fa-temperature-half">
+                  <span class="todayTemp"></span>
                 </span>
 
                 <span class="units">
                   <a href="#" class="celsius">°C </a><span class="line"> |</span
-                  ><a href="#" class="fahrenheit">°F</a></span
+                  ><a href="#" id="fahrenheit">°F</a></span
                 >
               </div>
               <div class="col-3 weather-description">

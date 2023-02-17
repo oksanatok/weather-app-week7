@@ -61,7 +61,8 @@ a {
   width: 35px;
   height: 35px;
 }
-.fa-wind {
+.fa-wind,
+.fa-temperature-half {
   padding-left: 10px;
   margin-right: 2pt;
 }

@@ -89,3 +89,13 @@ function search(event) {
 
   currentCity.innerHTML = searchResult.value;
 }
+// Convert units
+function showFahrTemp(event) {
+  event.preventDefault();
+  let fahrTemp = (14 * 9) / 5 + 32;
+
+  let temperatureElement = document.querySelector(".todayTemp");
+  temperatureElement.innerHTML = Math.round(fahrTemp);
+}
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrTemp);
