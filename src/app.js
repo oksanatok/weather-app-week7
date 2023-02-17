@@ -31,11 +31,15 @@ let month = months[now.getMonth()];
 let year = now.getFullYear();
 let date = now.getDate();
 
-let currentDate = document.querySelector(".what");
+let currentDate = document.querySelector(".dateToday");
 currentDate.innerHTML = `${date} ${month} ${year}`;
 
 let currentTime = document.querySelector(".time");
-currentTime.innerHTML = now.toLocaleTimeString();
+currentTime.innerHTML = now.toLocaleTimeString([], {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+});
 
 //Code for city and temp calls
 
@@ -44,16 +48,23 @@ form.addEventListener("submit", handleSearch);
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
-  console.log(response);
+  let iconElement = document.querySelector("#weather-icon");
+
+  let descriptionElement = document.querySelector("#description");
   document.querySelector(".city").innerHTML = response.data.name;
   document.querySelector(".todayTemp").innerHTML = Math.round(
     response.data.main.temp
   );
+  descriptionElement.innerHTML = response.data.weather[0].description;
   document.querySelector(".humidity").innerHTML = response.data.main.humidity;
   document.querySelector(".wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   );
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 function searchCity(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
@@ -78,23 +89,3 @@ function search(event) {
 
   currentCity.innerHTML = searchResult.value;
 }
-//Location button
-function retrievePosition(position) {
-  console.log(position);
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function locationTemperature(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(retrievePosition);
-}
-
-let currentlocation = document.querySelector(".currentLocation");
-currentlocation.addEventListener("click", locationTemperature);
-
-navigator.geolocation.getCurrentPosition(retrievePosition);
