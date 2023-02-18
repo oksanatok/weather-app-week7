@@ -61,8 +61,21 @@ a {
   width: 35px;
   height: 35px;
 }
-.fa-wind,
-.fa-temperature-half {
+.fa-wind {
   padding-left: 10px;
   margin-right: 2pt;
+}
+.fa-temperature-half {
+  margin-right: 2pt;
+  font-size: 22pt;
+}
+#description {
+  display: inline-block;
+}
+#description::first-letter {
+  text-transform: uppercase;
+}
+.active {
+  color: black;
+  cursor: default;
 }
